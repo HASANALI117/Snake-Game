@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+
+.gameBox {
+  /* border: solid black 1px; */
+  height: 300px;
+  width: 300px;
+  display: grid;
+  position: relative;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+}
+/* .mine {
+  border: solid black 2px;
+  height: 300px;
+  width: 300px;
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+}
+.minecolor {
+  background-color: #bfccb5;
+  border-top: #eeeeee solid 2px;
+  border-left: #eeeeee solid 2px;
+  border-bottom: #7f8487 solid 2px;
+  border-right: #7f8487 solid 2px;
+} */
+.food {
+  /* background-image: url("../img/apple.png");
+  background-size: cover; */
+  background-color: red;
+}
+.snake {
+  background-color: #bfdb38;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+}
