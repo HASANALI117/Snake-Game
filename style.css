@@ -35,3 +35,6 @@ body {
   width: 30px;
   position: absolute;
 }
+.s1 {
+  grid-column: 2;
+}
