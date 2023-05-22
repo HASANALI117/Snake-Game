@@ -35,6 +35,9 @@ body {
   width: 30px;
   position: absolute;
 }
-.s1 {
-  grid-column: 2;
+.snakecopy {
+  background-color: #bfdb38;
+  height: 30px;
+  width: 30px;
+  position: absolute;
 }
