@@ -3,12 +3,13 @@ body {
 }
 
 .gameBox {
-  /* border: solid black 1px; */
+  border: solid black 1px;
   height: 300px;
   width: 300px;
   display: grid;
   position: relative;
   grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  background-color: black;
 }
 /* .mine {
   border: solid black 2px;
@@ -25,18 +26,28 @@ body {
   border-right: #7f8487 solid 2px;
 } */
 .food {
-  /* background-image: url("../img/apple.png");
-  background-size: cover; */
-  background-color: red;
+  background-image: url("../img/apple.png");
+  background-size: cover;
+  /* background-color: red; */
 }
-.snake {
+/* .snake {
   background-color: #bfdb38;
   height: 30px;
   width: 30px;
   position: absolute;
-}
-.snakecopy {
+} */
+
+/* .snake {
   background-color: #bfdb38;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  border-radius: 100%;
+} */
+
+.snake {
+  /* border: solid 1px red; */
+  background-color: white;
   height: 30px;
   width: 30px;
   position: absolute;

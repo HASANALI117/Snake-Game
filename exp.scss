@@ -1,0 +1,46 @@
+$numberOfDots: 20;
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #55d6be;
+}
+.snake {
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: #fc6471;
+    border-radius: 50%;
+    margin: 5px 0;
+    &:nth-child(1) {
+      width: 10px;
+      height: 10px;
+      background: #fff !important;
+    }
+    &:nth-child(odd) {
+      background: #090909;
+    }
+  }
+}
+@for $i from 1 through $numberOfDots {
+  $delay: 0.1 * $i;
+  .dot-#{$i} {
+    animation: dot 1.5s infinite;
+    animation-delay: $delay + s;
+  }
+}
+@keyframes dot {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
