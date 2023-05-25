@@ -1,162 +1,104 @@
-// let gameBox = $(".gameBox");
-// let snake = $(".snake");
-// let food = $(".food");
+let gameBox = document.querySelector(".gameBox");
+// let game = document.getElementById("game");
+let loseDiv = document.createElement("div");
+loseDiv.innerHTML = 'class= "center" ';
+loseDiv.innerText = "YOU LOSE!";
 
-// let snakex = 1;
-// let snakey = 1;
-// let foodx = 0;
-// let foody = 0;
-// let snakeDivs = [];
-// let direction = {
-//   dx: 1,
-//   dy: 0,
-// };
-// const dir = {
-//   d: {
-//     dx: 1,
-//     dy: 0,
-//   },
-//   w: {
-//     dx: 0,
-//     dy: -1,
-//   },
-//   a: {
-//     dx: -1,
-//     dy: 0,
-//   },
-//   s: {
-//     dx: 0,
-//     dy: 1,
-//   },
-// };
+let score = document.querySelector(".score");
+let scoreCount = 0;
 
-// function randomFood() {
-//   foodx = Math.floor(Math.random() * 10) + 1;
-//   foody = Math.floor(Math.random() * 10) + 1;
-//   food.css("grid-area", `${foody} / ${foodx}`);
-// }
-// randomFood();
+let highScore = document.querySelector(".highScore");
+let highScoreCount = localStorage.getItem("highScore") || 0;
+highScore.innerText = `High Score : ${highScoreCount}`;
 
-// function game() {
-//   // gameBox.html(
-//   //   `<div class="snake" style="grid-area:${snakey} / ${snakex}"></div>`
-//   // );
-//   snake.css("grid-area", `${snakey} / ${snakex}`);
-
-//   if (snakex === foodx && snakey === foody) {
-//     snakeDivs.push([foody, foodx]);
-//     randomFood();
-//     console.log(snakeDivs);
-//   }
-//   for (let i = snakeDivs.length - 1; i > 0; i--) {
-//     snakeDivs[i] = snakeDivs[i] - 1;
-//   }
-//   snakeDivs[0] = [snakey, snakex];
-//   for (let i = 0; i < snakeDivs.length; i++) {
-//     gameBox.append(
-//       `<div class="snake" style="grid-area:${snakeDivs[i][0]} / ${snakeDivs[i][1]}"></div>`
-//     );
-//   }
-
-//   snakex += direction.dx;
-//   snakey += direction.dy;
-//   // let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   // if (snakex <= 10 && snakey <= 10 && snakex >= 1 && snakey >= 1) {
-//   //   console.log(snakey, snakex);
-//   // } else {
-//   //   clearInterval(gameLoop);
-//   //   alert("Game Over");
-//   // }
-//   // console.log(arr[x]);
-//   // snakex = Number(snake.css("grid-column").split("/")[0]);
-//   // snakey = Number(snake.css("grid-row").split("/")[0]);
-//   // console.log("x value: " + snakex + "     y value: " + snakey);
-//   // console.log(changeOfDirection);
-//   // }
-// }
-
-// let gameLoop = setInterval(game, 150);
-// $("body").on("keydown", function (e) {
-//   direction = dir[e.key];
-// });
-
-let gameBox = $(".gameBox");
-let snake = $(".snake");
-let food = $(".food");
-let snakex = 1;
-let snakey = 1;
-let foodx = 0;
-let foody = 0;
+let foodX;
+let foodY;
+let snakeX = 3;
+let snakeY = 3;
+let snakeBody = [];
 let direction = {
-  dx: 1,
+  dx: 0,
   dy: 0,
 };
-const dir = {
-  d: {
-    dx: 1,
-    dy: 0,
-  },
-  w: {
-    dx: 0,
-    dy: -1,
-  },
-  a: {
-    dx: -1,
-    dy: 0,
-  },
-  s: {
-    dx: 0,
-    dy: 1,
-  },
+const keyDirection = {
+  d: { dx: 1, dy: 0 },
+  a: { dx: -1, dy: 0 },
+  w: { dx: 0, dy: -1 },
+  s: { dx: 0, dy: 1 },
 };
 
 function randomFood() {
-  foodx = Math.floor(Math.random() * 10) + 1;
-  foody = Math.floor(Math.random() * 10) + 1;
-  food.css("grid-area", `${foody} / ${foodx}`);
+  foodX = Math.floor(Math.random() * 30 + 1);
+  foodY = Math.floor(Math.random() * 30 + 1);
+  let foodItems = [
+    "apple",
+    "blueberries",
+    "burger",
+    "fries",
+    "hotdog",
+    "pacman=ghost",
+    "poison-ghost",
+    "pudding_red",
+    "pudding",
+    "ring",
+    "steak",
+  ];
+  let randomFoodItems = Math.floor(Math.random() * foodItems.length + 1);
+  // document.querySelector(".food").style.backgroundImage = "url(.../img/apple)";
 }
-
 randomFood();
 
-function moveSnake() {
-  // Move each segment of the snake's body
-  for (let i = snakeDivs.length - 1; i > 0; i--) {
-    snakeDivs[i] = [...snakeDivs[i - 1]];
-    const [y, x] = snakeDivs[i];
-    $(`.snake:nth-child(${i + 1})`).css("grid-area", `${y} / ${x}`);
-  }
+function gameOver() {
+  clearInterval(gameLoop);
+  alert("Game Over!");
+  game.append(loseDiv);
 }
 
 function game() {
-  if (snakex <= 10 && snakey <= 10 && snakex >= 1 && snakey >= 1) {
-    moveSnake(); // Call the moveSnake function
-
-    if (snakex === foodx && snakey === foody) {
-      snakeDivs.push([foody, foodx]);
-      console.log(snakeDivs);
+  if (snakeX > 0 && snakeY > 0 && snakeX < 31 && snakeY < 31) {
+    let gameContent = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
+    if (snakeX === foodX && snakeY === foodY) {
+      scoreCount++;
+      console.log(scoreCount);
+      snakeBody.push([foodY, foodX]);
       randomFood();
-      for (let i = 0; i < snakeDivs.length; i++) {
-        gameBox.append(
-          `<div class="snake" style="grid-area:${snakeDivs[i][0]} / ${snakeDivs[i][1]}"></div>`
-        );
+    }
+
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+      snakeBody[i] = snakeBody[i - 1];
+    }
+
+    snakeBody[0] = [snakeY, snakeX];
+
+    snakeX += direction.dx;
+    snakeY += direction.dy;
+    for (let i = 0; i < snakeBody.length; i++) {
+      gameContent += `<div class="snake" style="grid-area: ${snakeBody[i][0]} / ${snakeBody[i][1]}"></div>`;
+      if (
+        i !== 0 &&
+        snakeBody[0][0] === snakeBody[i][0] &&
+        snakeBody[0][1] === snakeBody[i][1]
+      ) {
+        gameOver();
       }
     }
-    // Move the snake's head
-    snakeDivs[0] = [snakey, snakex];
-    snake.css("grid-area", `${snakey} / ${snakex}`);
-    console.log(snakey, snakex);
-    snakex += direction.dx;
-    snakey += direction.dy;
+    if (scoreCount > highScoreCount) {
+      highScoreCount = scoreCount;
+    }
+    localStorage.setItem("highScore", highScoreCount);
+    score.innerText = `Score : ${scoreCount}`;
+    gameBox.innerHTML = gameContent;
   } else {
-    clearInterval(gameLoop);
-    alert("Game Over");
+    gameOver();
   }
 }
-
-let snakeDivs = [[snakey, snakex]]; // Store the snake's body segments
-
-let gameLoop = setInterval(game, 150);
-
-$("body").on("keydown", function (e) {
-  direction = dir[e.key];
+let gameLoop = setInterval(game, 100);
+document.addEventListener("keydown", function (e) {
+  let newDirection = keyDirection[e.key];
+  if (
+    newDirection.dx + direction.dx !== 0 ||
+    newDirection.dy + direction.dy !== 0
+  ) {
+    direction = keyDirection[e.key];
+  }
 });
