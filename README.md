@@ -2,12 +2,13 @@
 
 A simple snake game built with HTML, CSS, and JavaScript.
 
-![game](./imgs/game.jpg)
-
 ## Features :
 * Control the snake to eat apples and grow longer.
 * Avoid hitting the walls or yourself.
 * Score tracking.
+
+
+![game](./imgs/game.jpg)
 
 
 ## Overview
