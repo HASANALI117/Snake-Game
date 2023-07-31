@@ -17,14 +17,6 @@ Snake is a classic arcade game where the player controls a snake that is trying 
 
 The snake game is a simple game, but it is very addictive. It is a great game for people of all ages, and it is a great way to pass the time.
 
-## **[User Stories.](https://trello.com/invite/b/FoPWPyx6/ATTI92afcc41472c2cf12193dbb5fd03944505D1921B/gg)**
-
-### *Mockup*
-
-![game](./imgs/SCORE.jpg)
-
-![game](./imgs/box.jpg)
-
 
 ## Getting Started
 To get started with the Snake Game, you will need to have a web browser installed. Once you have a web browser, you can open the index.html file in the repo.
