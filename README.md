@@ -2,7 +2,7 @@
 
 A simple snake game built with HTML, CSS, and JavaScript.
 
-![game][./imgs/game.jpg]
+![game](./imgs/game.jpg)
 
 ## Features :
 * Control the snake to eat apples and grow longer.
@@ -18,13 +18,13 @@ The snake game is a simple game, but it is very addictive. It is a great game fo
 
 ## **[User Stories.](https://trello.com/invite/b/FoPWPyx6/ATTI92afcc41472c2cf12193dbb5fd03944505D1921B/gg)**
 
-### _<div align="center">Mockup</div>_
+### *Mockup*
 
-![game][./imgs/SCORE.jpg]
+![game](./imgs/SCORE.jpg)
 
-![game][./imgs/box.jpg]
+![game](./imgs/box.jpg)
 
----
+
 ## Getting Started
 To get started with the Snake Game, you will need to have a web browser installed. Once you have a web browser, you can open the index.html file in the repo.
 
@@ -48,6 +48,5 @@ Contributions are welcome! If you find any bugs or have any suggestions, please 
 - High-score leaderboard
 - Time mode
 
----
 
 **Game [Page]()**
