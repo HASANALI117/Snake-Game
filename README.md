@@ -35,7 +35,6 @@ The controls for the Snake Game are as follows:
 * **A:** Move the snake left.
 * **S:** Move the snake down.
 * **D:** Move the snake right.
-* **Spacebar:** Pause the game.
 
 ## Contributing
 Contributions are welcome! If you find any bugs or have any suggestions, please open an issue or submit a pull request.
